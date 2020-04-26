@@ -24,6 +24,60 @@ public class UserController {
         return "ViewUsers";
     }
 
+    @RequestMapping("/entry")
+    public String entry(){ return "Entry"; }
+
+    @RequestMapping("/userIndex")
+    public String userIndex(){ return "UserIndex"; }
+
+    @RequestMapping("/organizatorIndex")
+    public String organizatorIndex(){ return "OrganizatorIndex"; }
+
+    @RequestMapping("/organizatorRegistration")
+    public String organizatorRegistration(){ return "OrganizatorRegistration"; }
+
+    @RequestMapping("/userRegistration")
+    public String userRegistration(){ return "UserRegistration"; }
+
+    @RequestMapping("/weddingHosts")
+    public String weddingHosts(){ return "WeddingHosts"; }
+
+    @RequestMapping("/photographer")
+    public String photographer(){ return "Photographer"; }
+
+    @RequestMapping("/videographer")
+    public String videographer(){ return "Videographer"; }
+
+    @RequestMapping("/restaurant")
+    public String restaurant(){ return "Restaurant"; }
+
+    @RequestMapping("/decor")
+    public String decor(){ return "Decor"; }
+
+    @RequestMapping("/hairMakeUpMaster")
+    public String hairMakeUpMaster(){ return "HairMakeUpMaster"; }
+
+    @RequestMapping("/bridalShop")
+    public String bridalShop(){ return "BridalShop"; }
+
+    @RequestMapping("/showProgram")
+    public String showProgram(){ return "ShowProgram"; }
+
+    @RequestMapping("/transport")
+    public String transport(){ return "Transport"; }
+
+    @RequestMapping("/cake")
+    public String cake(){ return "Cake"; }
+
+    @RequestMapping("/music")
+    public String music(){ return "Music"; }
+
+    @RequestMapping("/dance")
+    public String dance(){ return "Dance"; }
+
+    @RequestMapping("/hotel")
+    public String hotel(){ return "Hotel"; }
+
     @RequestMapping("index")
     public String back(){
         return "../../index";
