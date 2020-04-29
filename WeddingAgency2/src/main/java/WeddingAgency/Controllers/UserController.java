@@ -1,7 +1,11 @@
 package WeddingAgency.Controllers;
 
 import WeddingAgency.DAO.UserDAO;
+import WeddingAgency.DAO.CategoryDAO;
 import WeddingAgency.Models.User;
+import WeddingAgency.Models.Category;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +18,13 @@ import java.util.List;
 
 @Controller
 public class UserController {
+    private static final Logger logger= LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     UserDAO userDao;
+
+    @Autowired
+    CategoryDAO categoryDao;
 
     @RequestMapping("/viewUsers")//Пояснение: указание какой url будет обрабатываться
     public String viewUsers(Model m){
@@ -39,44 +48,14 @@ public class UserController {
     @RequestMapping("/userRegistration")
     public String userRegistration(){ return "UserRegistration"; }
 
-    @RequestMapping("/weddingHosts")
-    public String weddingHosts(){ return "WeddingHosts"; }
-
-    @RequestMapping("/photographer")
-    public String photographer(){ return "Photographer"; }
-
-    @RequestMapping("/videographer")
-    public String videographer(){ return "Videographer"; }
-
-    @RequestMapping("/restaurant")
-    public String restaurant(){ return "Restaurant"; }
-
-    @RequestMapping("/decor")
-    public String decor(){ return "Decor"; }
-
-    @RequestMapping("/hairMakeUpMaster")
-    public String hairMakeUpMaster(){ return "HairMakeUpMaster"; }
-
-    @RequestMapping("/bridalShop")
-    public String bridalShop(){ return "BridalShop"; }
-
-    @RequestMapping("/showProgram")
-    public String showProgram(){ return "ShowProgram"; }
-
-    @RequestMapping("/transport")
-    public String transport(){ return "Transport"; }
-
-    @RequestMapping("/cake")
-    public String cake(){ return "Cake"; }
-
-    @RequestMapping("/music")
-    public String music(){ return "Music"; }
-
-    @RequestMapping("/dance")
-    public String dance(){ return "Dance"; }
-
-    @RequestMapping("/hotel")
-    public String hotel(){ return "Hotel"; }
+    @RequestMapping(value="/weddingHosts/{category}")
+    public String weddingHosts(@PathVariable int category, Model m){
+        List<User> list=userDao.getByCategory(category);  //Вывод списка пользователей по категориям и вывод названия категории
+        Category cat=categoryDao.getCategory(category);
+        m.addAttribute("list",list);
+        m.addAttribute("cat",cat.getName());
+        return "WeddingHosts";
+    }
 
     @RequestMapping("index")
     public String back(){

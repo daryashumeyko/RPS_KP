@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public class UserDAO {
     JdbcTemplate template;
-    private static Logger logger= LoggerFactory.getLogger(UserDAO.class);
+    private static final Logger logger= LoggerFactory.getLogger(UserDAO.class);
 
     public List<User> getAllUsers(){
         logger.info("Выполнение метода getAllUsers для вывода всех пользователей");
@@ -34,13 +34,26 @@ public class UserDAO {
             });
 
         }catch (Exception e){
-            logger.error("Ошибка при выполнении метода listAllTasks: ", e);
+            logger.error("Ошибка при выполнении метода getAllUsers: ", e);
             return null;
         }
     }
+
+    public List<User> getByCategory(int category){
+        logger.info("Выполнение метода getByCategory для вывода организаторов по категориям");
+        String sql="select * from user where category=?";
+        try{
+            List<User> org  = template.query(sql,new Object[]{category}, new BeanPropertyRowMapper<User>(User.class));
+            return org;
+        }catch (Exception e) {
+            logger.error("Ошибка при выполнении метода getByCategory: ", e);
+            return null;
+        }
+    }
+
     public User getUserById(int idUser){
         logger.info("Выполнение метода getUserById - получаем информацию о конкретном пользователе");
-        String query="select*from user where userId=?";
+        String query="select * from user where userId=?";
         try{
             return template.queryForObject(query, new Object[]{idUser}, new BeanPropertyRowMapper<User>(User.class));
         }catch (Exception e) {
