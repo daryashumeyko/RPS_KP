@@ -1,4 +1,4 @@
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Дарья
@@ -7,6 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <title> Свадебное агентство </title>
@@ -21,27 +24,30 @@
     </tr>
 </table>
 <br>
+<table border="2" width="70%" cellpadding="2">
+    <tr>
+        <td width="250" bgcolor="CC99FF"> <font size="5" color="660099">${cat}</font></td>
+        <td><a href="36.html">Сортировать по рейтингу</a></td>
+    </tr>
 
 <c:choose>
-    <c:when test="${fn:length(list) gt 0}">
-        <table border="2" width="70%" cellpadding="2">
-            <tr>
-                <td width="250" bgcolor="CC99FF"> <font size="5" color="660099">${cat}$</font></td>
-                <td><a href="36.html">Сортировать по рейтингу</a></td>
-            </tr>
 
-            <c:forEach var="user" items="${list}">
-                <tr>
-                    <td>${user.name}  ${user.surname}</td>
-                    <td>фото</td>
-                    <td>${user.rating}</td>
-                </tr>
-            </c:forEach>
-        </table>
+    <c:when test="${fn:length(list) gt 0}">
+        <c:forEach var="user" items="${list}">
+            <tr>
+                <td><a href="../organizatorInf/${user.userId}">${user.name} ${user.surname}</a></td>
+                <td>фото</td>
+                <td>${user.rating}</td>
+            </tr>
+        </c:forEach>
     </c:when>
+
     <c:otherwise>
-        <center><h3>Список пуст</h3></center>
+    <tr>
+        <td align="center"><h3>Список пуст</h3></td>
+    </tr>
     </c:otherwise>
 </c:choose>
+</table>
 </body>
 </html>

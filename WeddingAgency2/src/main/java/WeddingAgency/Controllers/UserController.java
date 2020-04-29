@@ -48,9 +48,18 @@ public class UserController {
     @RequestMapping("/userRegistration")
     public String userRegistration(){ return "UserRegistration"; }
 
+    @RequestMapping(value="/organizatorInf/{id}")
+    public String organizatorInf(@PathVariable int id, Model m){
+        User user=userDao.getUserById(id);  //Вывод организатора
+        logger.info(user.toString());
+        m.addAttribute("user",user);
+        return "OrganizatorInf";
+    }
+
     @RequestMapping(value="/weddingHosts/{category}")
     public String weddingHosts(@PathVariable int category, Model m){
         List<User> list=userDao.getByCategory(category);  //Вывод списка пользователей по категориям и вывод названия категории
+        logger.info(list.toString());
         Category cat=categoryDao.getCategory(category);
         m.addAttribute("list",list);
         m.addAttribute("cat",cat.getName());
@@ -76,7 +85,7 @@ public class UserController {
         else return "redirect:/Error";
     }
 
-    @RequestMapping(value="/saveuser")
+    @RequestMapping(value="/saveuser")  //добавление нового пользователя
     public String saveUser(@ModelAttribute("command") User user){
         int id = userDao.insert(user);
         if (id!=-1) return "redirect:/viewUsers";
