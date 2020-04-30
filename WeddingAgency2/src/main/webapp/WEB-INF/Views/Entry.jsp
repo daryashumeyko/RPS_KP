@@ -25,9 +25,6 @@
             <td><form:input path="password" /></td>
         </tr>
         <tr>
-            <td> </td>
-            <td><input type="submit" value="Добавить" /></td>
-        </tr>
     </table>
 </form:form>
 

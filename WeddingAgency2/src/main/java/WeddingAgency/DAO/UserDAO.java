@@ -72,13 +72,13 @@ public class UserDAO {
     }
     public int update(User user){
         logger.info("Выполнение метода update - изменение данных о пользователе");
-        String query="update user set name=?, surname=?, age=?, telephone=?, email=?, " +
-                "weddingWishes=?,login=?, password=?, email=?, where userId=?";
-        Object[] params = {user.getName(), user.getSurname(), user.getAge(),
-                user.getTelephone(), user.getEmail(), user.getWeddingWishes(),
-                user.getLogin(), user.getPassword()};
+        String query="update user set name=?, surname=?, age=?, telephone=?, " +
+                "email=?, login=?, password=?, typeOfUser=?  where userId=?";
+        Object[] params = {user.getName(), user.getSurname(),
+                user.getAge(), user.getTelephone(), user.getEmail(),
+                user.getLogin(), user.getPassword(), 1};
         int[] types = {Types.VARCHAR, Types.VARCHAR, Types.INTEGER, Types.VARCHAR,
-                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR};
+                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER};
         try {
             return template.update(query,params,types);
         }catch (Exception e) {
@@ -88,13 +88,14 @@ public class UserDAO {
     }
     public int insert(User user){
         logger.info("Выполнение метода insert - добавление нового пользователя");
-        String query="insert into user(name, surname, age, telephone, email, weddingWishes," +
-                " login, password, typeOfUser) values (?, ?, ?, ?, ?, ?, ?, ?, 1)";
-        Object[] params = {user.getName(), user.getSurname(), user.getAge(),
-                user.getTelephone(), user.getEmail(), user.getWeddingWishes(),
-                user.getLogin(), user.getPassword()};
-        int[] types = {Types.VARCHAR, Types.VARCHAR, Types.INTEGER, Types.VARCHAR,
-                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR};
+        String query="insert into user(userId, name, surname, age, telephone, email," +
+                " login, password, typeOfUser) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        logger.info(query);
+        Object[] params = {user.getUserId(), user.getName(), user.getSurname(),
+                user.getAge(), user.getTelephone(), user.getEmail(),
+                user.getLogin(), user.getPassword(), 1};
+        int[] types = {Types.INTEGER, Types.VARCHAR, Types.VARCHAR, Types.INTEGER,
+                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER};
         try {
             return template.update(query,params,types);
         }catch (Exception e) {

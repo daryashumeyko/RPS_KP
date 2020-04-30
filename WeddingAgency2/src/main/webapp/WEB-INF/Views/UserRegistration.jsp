@@ -20,35 +20,31 @@
             <td><h2>Заполните данные для регистрации:</h2></td>
         </tr>
         <tr>
-            <td>Имя</td>
+            <td>Имя:</td>
             <td><form:input path="name"/></td>
         </tr>
         <tr>
-            <td>Фамилия</td>
+            <td>Фамилия:</td>
             <td><form:input path="surname"/></td>
         </tr>
         <tr>
-            <td>Возраст</td>
+            <td>Возраст:</td>
             <td><form:input path="age"/></td>
         </tr>
         <tr>
-            <td>Телефон</td>
+            <td>Телефон:</td>
             <td><form:input path="telephone"/></td>
         </tr>
         <tr>
-            <td>Электронная почта</td>
+            <td>Электронная почта:</td>
             <td><form:input path="email"/></td>
         </tr>
         <tr>
-            <td>Пожелания к свадьбе</td>
-            <td><form:input path="weddingWishes"/></td>
-        </tr>
-        <tr>
-            <td>Логин</td>
+            <td>Логин:</td>
             <td><form:input path="login"/></td>
         </tr>
         <tr>
-            <td>Пароль</td>
+            <td>Пароль:</td>
             <td><form:input path="password"/></td>
         </tr>
         <tr>

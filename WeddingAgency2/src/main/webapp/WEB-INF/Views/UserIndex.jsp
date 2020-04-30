@@ -12,26 +12,22 @@
 </head>
 
 <body bgcolor="FFCCFF">
-
 <table border="3">
     <tr>
         <td bgcolor="CC99FF" width="60"> <a href="index">Выход</a> </td>
+        <td bgcolor="CC99FF" width="60"> <a href="index"><a href="userInf">Моя страница</a></a> </td>
     </tr>
 </table>
-
 <br><br>
-
 <table width="90%" border="1">
     <tr>
         <td width="250" bgcolor="CC99FF"> <font size="5" color="660099"><a href="33.html">Сообщения</a></font></td>
         <td><center><font color="000066" size="6">Свадебное агентство</font></center></td>
     </tr>
-
     <tr>
         <td width="250" bgcolor="CC99FF"> <font size="5" color="660099">Поиск</font></td>
         <td><center><font color="000066" size="6">"Мгновение"</font></center></td>
     </tr>
-
     <tr>
         <td><a href="weddingHosts/1">- Ведущие </a></td>
         <td rowspan="17">Мы являемся единственным свадебным агентством в городе Владимир,
@@ -41,7 +37,6 @@
             и даже заказать торт.
         </td>
     </tr>
-
     <tr>
         <td> <a href="weddingHosts/2">- Фотографы </a></td>
 
@@ -57,7 +52,6 @@
     <tr><td> <a href="weddingHosts/11">- Музыкальное сопровождение </a></td></tr>
     <tr><td> <a href="weddingHosts/12">- Постановка свадебного танца </a></td></tr>
     <tr><td> <a href="weddingHosts/13">- Отели </a></td></tr>
-
     <tr>
         <td width="250" bgcolor="CC99FF"> <font size="5" color="660099">Моя свадьба</font></td>
     </tr>

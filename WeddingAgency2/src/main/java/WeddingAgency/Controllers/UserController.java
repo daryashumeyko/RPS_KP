@@ -46,7 +46,11 @@ public class UserController {
     public String organizatorRegistration(){ return "OrganizatorRegistration"; }
 
     @RequestMapping("/userRegistration")
-    public String userRegistration(){ return "UserRegistration"; }
+    public String userRegistration(Model m){
+        logger.info("Выполнение метода userRegistration");
+        m.addAttribute("command", new User());
+        return "UserRegistration";
+    }
 
     @RequestMapping(value="/organizatorInf/{id}")
     public String organizatorInf(@PathVariable int id, Model m){
@@ -81,14 +85,15 @@ public class UserController {
     @RequestMapping(value = "show/editsave")
     public String editSave(@ModelAttribute("command") User user){
         int id = userDao.update(user);
-        if (id!=-1) return  "redirect:../viewUsers";
+        if (id!=-1) return  "redirect:../entry";
         else return "redirect:/Error";
     }
 
     @RequestMapping(value="/saveuser")  //добавление нового пользователя
     public String saveUser(@ModelAttribute("command") User user){
         int id = userDao.insert(user);
-        if (id!=-1) return "redirect:/viewUsers";
+        logger.info("Выполнение метода saveUser" + id);
+        if (id!=-1) return "redirect:/entry";
         else return "redirect:/Error";//Пояснение: возвращаем страницу error если при изменении записи произошли ошибки
     }
 
