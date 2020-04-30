@@ -40,6 +40,10 @@
             <td><form:input path="email"/></td>
         </tr>
         <tr>
+            <td>Пожелания к свадьбе:</td>
+            <td><form:input path="weddingWishes"/></td>
+        </tr>
+        <tr>
             <td>Логин:</td>
             <td><form:input path="login"/></td>
         </tr>
@@ -57,9 +61,7 @@
 <br>
 <table border="2">
     <tr>
-        <td bgcolor="CC99FF"> <a href="userIndex">Далее</a> </td>
         <td bgcolor="CC99FF" width="130"> <a href="index">Вернуться назад</a> </td>
-
     </tr>
 </table>
 

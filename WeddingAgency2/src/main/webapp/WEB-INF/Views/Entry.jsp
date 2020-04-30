@@ -14,7 +14,7 @@
 </head>
 
 <body bgcolor="FFCCFF">
-<form:form method="post" action="saveuser">
+<form:form method="post" action="checkUser">
     <table >
         <tr>
             <td>Логин:</td>
@@ -22,9 +22,12 @@
         </tr>
         <tr>
             <td>Пароль:</td>
-            <td><form:input path="password" /></td>
+            <td><form:input type="password" path="password" /></td>
         </tr>
         <tr>
+            <td> </td>
+            <td><input type="submit" value="Войти" /></td>
+        </tr>
     </table>
 </form:form>
 

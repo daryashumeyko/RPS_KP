@@ -70,15 +70,28 @@ public class UserDAO {
             return null;
         }
     }
+    public User checkUser(User user){
+        logger.info("Выполнение метода checkUser - проверка пользователя при входе");
+        String query="select * from user where login=? and password=?";
+        try {
+            return template.queryForObject(query, new Object[]{user.getLogin(), user.getPassword()}, new BeanPropertyRowMapper<User>(User.class));
+        }catch (Exception e) {
+            logger.error("Ошибка при выполнении метода checkUser: ", e);
+            return null;
+        }
+    }
     public int update(User user){
         logger.info("Выполнение метода update - изменение данных о пользователе");
         String query="update user set name=?, surname=?, age=?, telephone=?, " +
-                "email=?, login=?, password=?, typeOfUser=?  where userId=?";
-        Object[] params = {user.getName(), user.getSurname(),
-                user.getAge(), user.getTelephone(), user.getEmail(),
-                user.getLogin(), user.getPassword(), 1};
+                "email=?, login=?, password=?, weddingWishes=?, category=?, " +
+                "description=?, typeOfUser=?, photo=?, organizationName=?, address=?  where userId=?";
+        Object[] params = {user.getName(), user.getSurname(), user.getAge(), user.getTelephone(),
+                user.getEmail(), user.getLogin(), user.getPassword(), user.getWeddingWishes(),
+                user.getCategory(), user.getDescription(), user.getTypeOfUser(),
+                user.getPhoto(), user.getOrganizationName(), user.getAddress()};
         int[] types = {Types.VARCHAR, Types.VARCHAR, Types.INTEGER, Types.VARCHAR,
-                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER};
+                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER,
+                Types.VARCHAR, Types.INTEGER, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR};
         try {
             return template.update(query,params,types);
         }catch (Exception e) {
@@ -89,13 +102,34 @@ public class UserDAO {
     public int insert(User user){
         logger.info("Выполнение метода insert - добавление нового пользователя");
         String query="insert into user(userId, name, surname, age, telephone, email," +
-                " login, password, typeOfUser) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "weddingWishes, login, password, rating, typeOfUser) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         logger.info(query);
         Object[] params = {user.getUserId(), user.getName(), user.getSurname(),
                 user.getAge(), user.getTelephone(), user.getEmail(),
-                user.getLogin(), user.getPassword(), 1};
+                user.getWeddingWishes(), user.getLogin(), user.getPassword(), 0, 1};
+        int[] types = {Types.INTEGER, Types.VARCHAR, Types.VARCHAR, Types.INTEGER, Types.VARCHAR,
+                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.FLOAT, Types.INTEGER};
+        try {
+            return template.update(query,params,types);
+        }catch (Exception e) {
+            logger.error("Ошибка при выполнении метода insert: ", e);
+            return -1;
+        }
+    }
+
+    public int insertOrg(User user){
+        logger.info("Выполнение метода insertOrg - добавление нового организатора");
+        String query="insert into user(userId, name, surname, age, telephone, email," +
+                "description, category, photo, organizationName, address, login, password," +
+                "rating, typeOfUser) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        logger.info(query);
+        Object[] params = {user.getUserId(), user.getName(), user.getSurname(),
+                user.getAge(), user.getTelephone(), user.getEmail(), user.getDescription(),
+                user.getCategory(),user.getPhoto(), user.getOrganizationName(),
+                user.getAddress(), user.getLogin(), user.getPassword(), 0, 2};
         int[] types = {Types.INTEGER, Types.VARCHAR, Types.VARCHAR, Types.INTEGER,
-                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER};
+                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER, Types.VARCHAR,
+                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.FLOAT, Types.INTEGER};
         try {
             return template.update(query,params,types);
         }catch (Exception e) {

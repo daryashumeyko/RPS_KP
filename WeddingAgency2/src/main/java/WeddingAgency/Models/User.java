@@ -4,7 +4,7 @@ public class User {
     private int userId;
     private String name;
     private String surname;
-    private String age;
+    private int age;
     private String telephone;
     private String weddingWishes;
     private String category;
@@ -13,15 +13,18 @@ public class User {
     private String login;
     private String password;
     private String email;
+    private String photo;
+    private String organizationName;
+    private String address;
     private float rating;
 
     public User(){
     }
 
-    public User(int id, String name, String surname, String age,
-                String telephone, String weddingWishes, String category,
-                String description, int typeOfUser, String login, String password,
-                String email, float rating){
+    public User(int id, String name, String surname, int age, String telephone,
+                String weddingWishes, String category, String description, int typeOfUser,
+                String login, String password, String email, String photo,
+                String organizationName, String address, float rating){
         userId = id;
         this.name = name;
         this.surname = surname;
@@ -34,6 +37,9 @@ public class User {
         this.login = login;
         this.password = password;
         this.email = email;
+        this.photo = photo;
+        this.organizationName = organizationName;
+        this.address = address;
         this.rating = rating;
     }
 
@@ -61,11 +67,11 @@ public class User {
         this.surname = surname;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -131,6 +137,30 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getOrganizationName() {
+        return organizationName;
+    }
+
+    public void setOrganizationName(String organizationName) {
+        this.organizationName = organizationName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public float getRating() {

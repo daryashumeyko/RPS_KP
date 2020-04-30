@@ -34,7 +34,10 @@ public class UserController {
     }
 
     @RequestMapping("/entry")
-    public String entry(){ return "Entry"; }
+    public String entry(Model m){
+        m.addAttribute("command", new User());
+        return "Entry";
+    }
 
     @RequestMapping("/userIndex")
     public String userIndex(){ return "UserIndex"; }
@@ -43,7 +46,11 @@ public class UserController {
     public String organizatorIndex(){ return "OrganizatorIndex"; }
 
     @RequestMapping("/organizatorRegistration")
-    public String organizatorRegistration(){ return "OrganizatorRegistration"; }
+    public String organizatorRegistration(Model m){
+        logger.info("Выполнение метода organizatorRegistration");
+        m.addAttribute("command", new User());
+        return "OrganizatorRegistration";
+    }
 
     @RequestMapping("/userRegistration")
     public String userRegistration(Model m){
@@ -93,6 +100,25 @@ public class UserController {
     public String saveUser(@ModelAttribute("command") User user){
         int id = userDao.insert(user);
         logger.info("Выполнение метода saveUser" + id);
+        if (id!=-1) return "redirect:/entry";
+        else return "redirect:/Error";//Пояснение: возвращаем страницу error если при изменении записи произошли ошибки
+    }
+
+    @RequestMapping(value="/checkUser")  //проверка пользователя
+    public String checkUser(@ModelAttribute("command") User user){
+        User foundedUser=userDao.checkUser(user);
+        logger.info("Выполнение метода checkUser " + user.getLogin());
+        if (foundedUser==null) return "redirect:/Error";
+        if (foundedUser.getTypeOfUser()==1) return "redirect:/userIndex";//Пояснение: возвращаем страницу error если при изменении записи произошли ошибки
+        if (foundedUser.getTypeOfUser()==2) return "redirect:/organizatorIndex";
+        if (foundedUser.getTypeOfUser()==3) return "redirect:/adminIndex";
+        return "redirect:/Error";
+    }
+
+    @RequestMapping(value="/saveorganizator")  //добавление нового пользователя
+    public String saveOrganizator(@ModelAttribute("command") User user){
+        int id = userDao.insertOrg(user);
+        logger.info("Выполнение метода saveOrganizator" + id);
         if (id!=-1) return "redirect:/entry";
         else return "redirect:/Error";//Пояснение: возвращаем страницу error если при изменении записи произошли ошибки
     }
