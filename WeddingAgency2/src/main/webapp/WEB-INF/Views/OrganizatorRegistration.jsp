@@ -43,8 +43,23 @@
             <td>Описание:</td>
             <td><form:input path="description"/></td>
         </tr>
+
         <tr>
-            <td>Категория:</td>
+            <td>Категория:
+            <select>
+                <option label="Ведущие" value="1" selected>Ведущие</option>
+                <option>Видеографы</option>
+                <option>Рестораны </option>
+                <option>Декор и флористика </option>
+                <option>Мастера причёски и макияжа </option>
+                <option>Свадебные салоны </option>
+                <option>Шоу-программы </option>
+                <option>Транспорт </option>
+                <option>Торты </option>
+                <option>Музыкальное сопровождение </option>
+                <option>Постановка свадебного танца </option>
+                <option>Отели </option>
+            </select></td>
             <td><form:input path="category"/></td>
         </tr>
         <tr>

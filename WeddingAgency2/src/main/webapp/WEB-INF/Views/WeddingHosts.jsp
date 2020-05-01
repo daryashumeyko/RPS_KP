@@ -19,8 +19,8 @@
 
 <table border="3">
     <tr>
-        <td bgcolor="CC99FF" width="60"> <a href="index">Выход</a></td>
-        <td bgcolor="CC99FF" width="150"> <a href="userIndex">Вернуться назад</a> </td>
+        <td bgcolor="CC99FF" width="60"> <a href="../index">Выход</a></td>
+        <td bgcolor="CC99FF" width="150"> <a href="../${backRef}">Вернуться назад</a> </td>
     </tr>
 </table>
 <br>

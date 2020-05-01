@@ -16,6 +16,7 @@
 <table border="3">
     <tr>
         <td bgcolor="CC99FF" width="60"> <a href="index">Выход</a> </td>
+        <td><a href="myOrgInf">${userJSP.name} ${userJSP.surname}</a></td>
     </tr>
 </table>
 

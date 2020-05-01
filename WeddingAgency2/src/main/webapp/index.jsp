@@ -15,10 +15,6 @@
         <td bgcolor="CC99FF"> <a href="userRegistration">Регистрация клиента</a> </td>
         <td bgcolor="CC99FF"> <a href="organizatorRegistration">Регистрация организатора</a> </td>
     </tr>
-    <tr>
-        <td bgcolor="CC99FF"> <a href="userIndex">Вход как клиент</a> </td>
-        <td bgcolor="CC99FF"> <a href="organizatorIndex">Вход как организатор</a> </td>
-    </tr>
 </table>
 
 <br><br>

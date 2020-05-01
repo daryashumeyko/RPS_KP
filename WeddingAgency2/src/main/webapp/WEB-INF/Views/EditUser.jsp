@@ -50,7 +50,7 @@
         </tr>
         <tr>
             <td> </td>
-            <td><input type="submit" value="Принять изменения" /></td>
+            <td><input type="submit" value="Сохранить изменения" /></td>
         </tr>
     </table>
 </form:form>

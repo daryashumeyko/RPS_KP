@@ -70,6 +70,7 @@ public class UserDAO {
             return null;
         }
     }
+
     public User checkUser(User user){
         logger.info("Выполнение метода checkUser - проверка пользователя при входе");
         String query="select * from user where login=? and password=?";
@@ -80,6 +81,7 @@ public class UserDAO {
             return null;
         }
     }
+
     public int update(User user){
         logger.info("Выполнение метода update - изменение данных о пользователе");
         String query="update user set name=?, surname=?, age=?, telephone=?, " +
@@ -99,6 +101,7 @@ public class UserDAO {
             return -1;
         }
     }
+
     public int insert(User user){
         logger.info("Выполнение метода insert - добавление нового пользователя");
         String query="insert into user(userId, name, surname, age, telephone, email," +

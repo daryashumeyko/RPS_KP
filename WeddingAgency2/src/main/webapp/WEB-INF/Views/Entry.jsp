@@ -33,7 +33,6 @@
 
 <table border="2">
     <tr>
-        <td bgcolor="CC99FF" width="100"> <a href="userIndex">Войти</a> </td>
         <td bgcolor="CC99FF" width="120"> <a href="index">Вернуться назад</a> </td>
     </tr>
 </table>
