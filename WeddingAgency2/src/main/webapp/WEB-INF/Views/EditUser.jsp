@@ -32,7 +32,7 @@
     </style>
 </head>
 <body>
-<a href="index">Вернутся назад</a>
+<a href="index">Вернуться назад</a>
 <center><h3>Измените данные о пользователе</h3></center>
 <form:form method="post" action="editsave">
     <table>
@@ -50,7 +50,7 @@
         </tr>
         <tr>
             <td> </td>
-            <td><input type="submit" value="Принять изменения" /></td>
+            <td><input type="submit" value="Сохранить изменения" /></td>
         </tr>
     </table>
 </form:form>
