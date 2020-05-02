@@ -58,7 +58,7 @@
     <tr>
         <td width="250" bgcolor="CC99FF"> <font size="5" color="660099">Моя свадьба</font></td>
     </tr>
-    <tr><td> <a href="17.html">- Список гостей </a></td></tr>
+    <tr><td> <a href="guests">- Список гостей </a></td></tr>
     <tr><td> <a href="18.html">- Учёт расходов </a></td></tr>
     <tr><td> <a href="19.html">- Мои заказы </a></td></tr>
 </table>

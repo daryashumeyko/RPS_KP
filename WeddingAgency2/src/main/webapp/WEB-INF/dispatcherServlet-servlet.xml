@@ -32,4 +32,8 @@
     <bean id="CategoryDao" class="WeddingAgency.DAO.CategoryDAO">
         <property name="template" ref="jt"></property>
     </bean>
+
+    <bean id="GuestsDao" class="WeddingAgency.DAO.GuestsDAO">
+        <property name="template" ref="jt"></property>
+    </bean>
 </beans>
