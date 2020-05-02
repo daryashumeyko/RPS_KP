@@ -18,38 +18,17 @@ public class UserDAO {
     JdbcTemplate template;
     private static final Logger logger= LoggerFactory.getLogger(UserDAO.class);
 
-    public List<User> getAllUsers(){
-        logger.info("Выполнение метода getAllUsers для вывода всех пользователей");
-        try{
-            return template.query("select * from user",new RowMapper<User>(){
-
-                public User mapRow(ResultSet rs, int row) throws SQLException {
-                    User u =  new User();
-                    u.setUserId(rs.getInt("userId"));
-                    u.setLogin(rs.getString("login"));
-                    u.setPassword(rs.getString("password"));
-                    u.setEmail(rs.getString("email"));
-                    return u;
-                }
-            });
-
-        }catch (Exception e){
-            logger.error("Ошибка при выполнении метода getAllUsers: ", e);
-            return null;
-        }
-    }
-
     public List<User> getByCategory(int category){
         logger.info("Выполнение метода getByCategory для вывода организаторов по категориям");
         String Sql="select * from user where category=" + category;
         try{
             return template.query(Sql,new RowMapper<User>(){
-
                 public User mapRow(ResultSet rs, int row) throws SQLException {
                     User u =  new User();
                     u.setUserId(rs.getInt("userId"));
                     u.setName(rs.getString("name"));
                     u.setSurname(rs.getString("surname"));
+                    u.setOrganizationName(rs.getString("organizationName"));
                     u.setRating(rs.getFloat("rating"));
                     return u;
                 }
@@ -82,28 +61,8 @@ public class UserDAO {
         }
     }
 
-    public int update(User user){
-        logger.info("Выполнение метода update - изменение данных о пользователе");
-        String query="update user set name=?, surname=?, age=?, telephone=?, " +
-                "email=?, login=?, password=?, weddingWishes=?, category=?, " +
-                "description=?, typeOfUser=?, photo=?, organizationName=?, address=?  where userId=?";
-        Object[] params = {user.getName(), user.getSurname(), user.getAge(), user.getTelephone(),
-                user.getEmail(), user.getLogin(), user.getPassword(), user.getWeddingWishes(),
-                user.getCategory(), user.getDescription(), user.getTypeOfUser(),
-                user.getPhoto(), user.getOrganizationName(), user.getAddress()};
-        int[] types = {Types.VARCHAR, Types.VARCHAR, Types.INTEGER, Types.VARCHAR,
-                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER,
-                Types.VARCHAR, Types.INTEGER, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR};
-        try {
-            return template.update(query,params,types);
-        }catch (Exception e) {
-            logger.error("Ошибка при выполнении метода update: ", e);
-            return -1;
-        }
-    }
-
     public int insert(User user){
-        logger.info("Выполнение метода insert - добавление нового пользователя");
+        logger.info("Выполнение метода insert - добавление нового клиента");
         String query="insert into user(userId, name, surname, age, telephone, email," +
                 "weddingWishes, login, password, rating, typeOfUser) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         logger.info(query);
@@ -141,20 +100,48 @@ public class UserDAO {
         }
     }
 
-    public int delete(int idUser){
-        logger.info("Выполнение метода delete - удаление пользователя");
-        String query="delete from user where userId=?";
-        Object[] params = {idUser};
-        int[] types = {Types.INTEGER};
-        try {
-            return template.update(query,params,types);
-        }catch (Exception e) {
-            logger.error("Ошибка при выполнении метода delete: ", e);
-            return -1;
-        }
-    }
-
     public void setTemplate(JdbcTemplate template) {
         this.template = template;
     }
+
+    /*public List<User> getAllUsers(){
+        logger.info("Выполнение метода getAllUsers для вывода всех пользователей");
+        try{
+            return template.query("select * from user",new RowMapper<User>(){
+
+                public User mapRow(ResultSet rs, int row) throws SQLException {
+                    User u =  new User();
+                    u.setUserId(rs.getInt("userId"));
+                    u.setLogin(rs.getString("login"));
+                    u.setPassword(rs.getString("password"));
+                    u.setEmail(rs.getString("email"));
+                    return u;
+                }
+            });
+
+        }catch (Exception e){
+            logger.error("Ошибка при выполнении метода getAllUsers: ", e);
+            return null;
+        }
+    }*/
+
+    /* public int update(User user){
+        logger.info("Выполнение метода update - изменение данных о пользователе");
+        String query="update user set name=?, surname=?, age=?, telephone=?, " +
+                "email=?, login=?, password=?, weddingWishes=?, category=?, " +
+                "description=?, typeOfUser=?, photo=?, organizationName=?, address=?  where userId=?";
+        Object[] params = {user.getName(), user.getSurname(), user.getAge(), user.getTelephone(),
+                user.getEmail(), user.getLogin(), user.getPassword(), user.getWeddingWishes(),
+                user.getCategory(), user.getDescription(), user.getTypeOfUser(),
+                user.getPhoto(), user.getOrganizationName(), user.getAddress()};
+        int[] types = {Types.VARCHAR, Types.VARCHAR, Types.INTEGER, Types.VARCHAR,
+                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER,
+                Types.VARCHAR, Types.INTEGER, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR};
+        try {
+            return template.update(query,params,types);
+        }catch (Exception e) {
+            logger.error("Ошибка при выполнении метода update: ", e);
+            return -1;
+        }
+    }*/
 }

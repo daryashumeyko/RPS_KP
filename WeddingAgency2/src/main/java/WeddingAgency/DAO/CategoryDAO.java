@@ -1,6 +1,5 @@
 package WeddingAgency.DAO;
 import WeddingAgency.Models.Category;
-import WeddingAgency.DAO.CategoryDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

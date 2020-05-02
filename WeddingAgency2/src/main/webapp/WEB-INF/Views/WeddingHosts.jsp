@@ -29,13 +29,15 @@
         <td width="250" bgcolor="CC99FF"> <font size="5" color="660099">${cat}</font></td>
         <td><a href="36.html">Сортировать по рейтингу</a></td>
     </tr>
+</table>
 
+<table border="2" width="70%" cellpadding="2">
 <c:choose>
-
     <c:when test="${fn:length(list) gt 0}">
         <c:forEach var="user" items="${list}">
             <tr>
                 <td><a href="../organizatorInf/${user.userId}">${user.name} ${user.surname}</a></td>
+                <td>${user.organizationName}</td>
                 <td>фото</td>
                 <td>${user.rating}</td>
             </tr>
