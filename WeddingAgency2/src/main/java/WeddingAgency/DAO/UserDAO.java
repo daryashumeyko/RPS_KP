@@ -82,15 +82,15 @@ public class UserDAO {
     public int insertOrg(User user){
         logger.info("Выполнение метода insertOrg - добавление нового организатора");
         String query="insert into user(userId, name, surname, age, telephone, email," +
-                "description, category, photo, organizationName, address, login, password," +
+                "description, category, image, organizationName, address, login, password," +
                 "rating, typeOfUser) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         logger.info(query);
         Object[] params = {user.getUserId(), user.getName(), user.getSurname(),
                 user.getAge(), user.getTelephone(), user.getEmail(), user.getDescription(),
-                user.getCategory(),user.getPhoto(), user.getOrganizationName(),
+                user.getCategory(),user.getImage(), user.getOrganizationName(),
                 user.getAddress(), user.getLogin(), user.getPassword(), 0, 2};
         int[] types = {Types.INTEGER, Types.VARCHAR, Types.VARCHAR, Types.INTEGER,
-                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER, Types.VARCHAR,
+                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER, Types.BLOB,
                 Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.FLOAT, Types.INTEGER};
         try {
             return template.update(query,params,types);

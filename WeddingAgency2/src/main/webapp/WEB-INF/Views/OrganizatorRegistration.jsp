@@ -14,7 +14,7 @@
 </head>
 
 <body bgcolor="FFCCFF">
-<form:form method="post" action="saveorganizator">
+<form:form method="post" action="saveorganizator" enctype="multipart/form-data">
     <table >
         <tr>
             <td><h2>Заполните данные для регистрации:</h2></td>
@@ -43,7 +43,6 @@
             <td>Описание:</td>
             <td><form:input path="description"/></td>
         </tr>
-
         <tr>
             <td>Категория:
             <select>
@@ -59,12 +58,13 @@
                 <option>Музыкальное сопровождение </option>
                 <option>Постановка свадебного танца </option>
                 <option>Отели </option>
-            </select></td>
+            </select>
+            </td>
             <td><form:input path="category"/></td>
         </tr>
         <tr>
             <td>Фото:</td>
-            <td><form:input path="photo"/></td>
+            <td><input type="file" name="image2"/></td>
         </tr>
         <tr>
             <td>Название организации:</td>

@@ -44,7 +44,6 @@
 </table>
 <br>
 <table border="0">
-
     <tr>
         <td bgcolor="CC99FF" width="150"> <a href="23.html">Добавить отзыв</a> </td>
     </tr>
@@ -59,20 +58,17 @@
             </select>
         </td>
     </tr>
-
     <tr>
         <td bgcolor="CC99FF" width="150"> <a href="23.html">Поставить оценку</a> </td>
     </tr>
-
     <tr>
         <input type="text" size="100">
     </tr>
-
     <tr>
         <td bgcolor="CC99FF" width="150"> <a href="34.html">Написать сообщение</a> </td>
     </tr>
-
 </table>
+
 </body>
 </html>
 

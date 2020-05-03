@@ -13,7 +13,7 @@ public class User {
     private String login;
     private String password;
     private String email;
-    private String photo;
+    private byte[] image;
     private String organizationName;
     private String address;
     private float rating;
@@ -23,7 +23,7 @@ public class User {
 
     public User(int id, String name, String surname, int age, String telephone,
                 String weddingWishes, String category, String description, int typeOfUser,
-                String login, String password, String email, String photo,
+                String login, String password, String email, byte[] image,
                 String organizationName, String address, float rating){
         userId = id;
         this.name = name;
@@ -37,7 +37,7 @@ public class User {
         this.login = login;
         this.password = password;
         this.email = email;
-        this.photo = photo;
+        this.image = image;
         this.organizationName = organizationName;
         this.address = address;
         this.rating = rating;
@@ -139,12 +139,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPhoto() {
-        return photo;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public String getOrganizationName() {

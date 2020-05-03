@@ -12,7 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -156,10 +159,17 @@ public class UserController {
     }
 
     @RequestMapping(value="/saveorganizator")  //добавление нового организатора
-    public String saveOrganizator(@ModelAttribute("command") User user){
+    public String saveOrganizator(@ModelAttribute("command") User user, @RequestParam("image2") MultipartFile image) {
+        logger.info("Выполнение метода saveOrganizator " + image.getSize());
+        try {
+            user.setImage(image.getBytes());
+        } catch (Exception e) {
+            return "redirect:/Error";
+            //return new ModelAndView("index", "msg", "Error: " + e.getMessage());
+        }
         int id = userDao.insertOrg(user);    //вызов метода insertOrg
-        logger.info("Выполнение метода saveOrganizator" + id);
-        if (id!=-1) return "redirect:/entry";
+        logger.info("Выполнение метода saveOrganizator " + id);
+         if (id!=-1) return "redirect:/entry";
         else return "redirect:/Error";//Пояснение: возвращаем страницу error если при изменении записи произошли ошибки
     }
 
