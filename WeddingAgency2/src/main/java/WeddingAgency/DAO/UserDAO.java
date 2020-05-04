@@ -20,7 +20,9 @@ public class UserDAO {
 
     public List<User> getByCategory(int category){
         logger.info("Выполнение метода getByCategory для вывода организаторов по категориям");
-        String Sql="select * from user where category=" + category;
+        String Sql="select u.userId, u.name, u.surname, u.organizationName, " +
+                "(select sum(mark)/count(*) from commentrating c where organizatorId=u.userId) as rating " +
+                "from user u where category=" + category;
         try{
             return template.query(Sql,new RowMapper<User>(){
                 public User mapRow(ResultSet rs, int row) throws SQLException {
@@ -44,6 +46,17 @@ public class UserDAO {
         String query="select * from user where userId=?";
         try{
             return template.queryForObject(query, new Object[]{id}, new BeanPropertyRowMapper<User>(User.class));
+        }catch (Exception e) {
+            logger.error("Ошибка при выполнении метода getUserById: ", e);
+            return null;
+        }
+    }
+
+    public byte[] getUserImage(int userId){
+        logger.info("Выполнение метода getUserImage - получаем картинку");
+        String query="select * from user where userId=?";
+        try{
+            return template.queryForObject(query, new Object[]{userId}, new BeanPropertyRowMapper<User>(User.class)).getImage();
         }catch (Exception e) {
             logger.error("Ошибка при выполнении метода getUserById: ", e);
             return null;

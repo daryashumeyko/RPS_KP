@@ -18,8 +18,9 @@
 
 <table border="3">
     <tr>
-        <td bgcolor="CC99FF" width="60"> <a href="index">Выход</a></td>
+        <td bgcolor="CC99FF" width="60"> <a href="../index">Выход</a></td>
         <td bgcolor="CC99FF" width="150"> <a href="../${backRef}">Вернуться на главную страницу</a> </td>
+        <td bgcolor="CC99FF" width="150"> <a href="34.html">Написать сообщение</a></td>
     </tr>
 </table>
 <br>
@@ -31,7 +32,7 @@
     </tr>
     <tr>
         <td>${user.description}</td>
-        <td>фото</td>
+        <td><img src="../getUserImage/${user.userId}" height="300" width="300"/></td>
     </tr>
     <tr>
         <td>Телефон: ${user.telephone}</td>
@@ -43,32 +44,43 @@
     </tr>
 </table>
 <br>
-<table border="0">
-    <tr>
-        <td bgcolor="CC99FF" width="150"> <a href="23.html">Добавить отзыв</a> </td>
-    </tr>
-    <tr>
-        <td>
-            <select>
-                <option label="1" value="1" selected>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td bgcolor="CC99FF" width="150"> <a href="23.html">Поставить оценку</a> </td>
-    </tr>
-    <tr>
-        <input type="text" size="100">
-    </tr>
-    <tr>
-        <td bgcolor="CC99FF" width="150"> <a href="34.html">Написать сообщение</a> </td>
-    </tr>
+<table border="0" ${hidden}>
+    <form:form method="post" action="../comment/${user.userId}">
+        <tr>
+            <td>Комментарий:</td>
+            <td><form:input path="comment"/></td>
+        </tr>
+        <tr>
+            <td>Оценка (введите значение от 1 до 5):</td>
+            <td><form:input path="mark"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Добавить" /></td>
+        </tr>
+    </form:form>
 </table>
 
+<table border="2" width="70%" cellpadding="2">
+    <c:choose>
+        <c:when test="${fn:length(list) gt 0}">
+            <c:forEach var="commentRating" items="${list}">
+                <tr>
+                    <td rowspan="2">${commentRating.mark}</td>
+                    <td>${commentRating.date} <a href="../userInf/${commentRating.userId}">${commentRating.name} ${commentRating.surname}</a></td>
+                </tr>
+                <tr>
+                    <td>${commentRating.comment}</td>
+                </tr>
+            </c:forEach>
+        </c:when>
+
+        <c:otherwise>
+            <tr>
+                <td align="center"><h3>Список пуст</h3></td>
+            </tr>
+        </c:otherwise>
+    </c:choose>
+</table>
 </body>
 </html>
 

@@ -27,15 +27,15 @@
 <table border="2" width="70%" cellpadding="2">
 
     <tr>
-        <td>${userJSP.name} ${userJSP.surname}</td>
-        <td>Возраст: ${userJSP.age}</td>
+        <td>${user.name} ${user.surname}</td>
+        <td>Возраст: ${user.age}</td>
     </tr>
     <tr>
-        <td>Телефон: ${userJSP.telephone}</td>
-        <td>Email: ${userJSP.email}</td>
+        <td>Телефон: ${user.telephone}</td>
+        <td>Email: ${user.email}</td>
     </tr>
     <tr>
-        <td>${userJSP.weddingWishes}</td>
+        <td>${user.weddingWishes}</td>
     </tr>
 </table>
 

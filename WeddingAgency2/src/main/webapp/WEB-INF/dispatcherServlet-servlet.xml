@@ -37,6 +37,10 @@
         <property name="template" ref="jt"></property>
     </bean>
 
+    <bean id="CommentRatingDao" class="WeddingAgency.DAO.CommentRatingDAO">
+        <property name="template" ref="jt"></property>
+    </bean>
+
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     <!-- p:defaultEncoding="utf-8"-->
