@@ -32,7 +32,7 @@
     </tr>
     <tr>
         <td>${user.description}</td>
-        <td>фото</td>
+        <td><img src="getUserImage/${user.userId}" height="300" width="300"/></td>
     </tr>
     <tr>
         <td>Телефон: ${user.telephone}</td>

@@ -38,7 +38,7 @@
             <tr>
                 <td><a href="../organizatorInf/${user.userId}">${user.name} ${user.surname}</a></td>
                 <td>${user.organizationName}</td>
-                <td>фото</td>
+                <td><img src="../getUserImage/${user.userId}" height="150" width="150"/></td>
                 <td>${user.rating}</td>
             </tr>
         </c:forEach>
