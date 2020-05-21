@@ -7,6 +7,8 @@ import WeddingAgency.Models.CommentRating;
 import WeddingAgency.Models.Guests;
 import WeddingAgency.Models.User;
 import WeddingAgency.Models.Category;
+import WeddingAgency.UserValidator;
+import com.sun.org.glassfish.external.probe.provider.annotations.ProbeParam;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +29,13 @@ import java.util.List;
 @Controller
 @SessionAttributes({"userJSP", "backRef"})   //Сессионные атрибуты для извлечения данных о пользователе после входа.
 public class UserController {
+
+   // private UserValidator validator;
+
+   // @Autowired
+    //public UserController(UserValidator validator){
+        //this.validator = validator;
+    //}
 
     private static final Logger logger= LoggerFactory.getLogger(UserController.class); //подключение логгера
 
@@ -49,7 +58,17 @@ public class UserController {
 
     @RequestMapping("/entry")      //открытие страницы входа
     public String entry(Model m){
+        logger.info("entry");
         m.addAttribute("command", new User());
+        m.addAttribute("msg", "");
+        return "Entry";
+    }
+
+    @RequestMapping("/errentry")      //ошибка при входе
+    public String errentry(Model m){
+        logger.info("errentry");
+        m.addAttribute("command", new User());
+        m.addAttribute("msg", "Неверный логин или пароль");
         return "Entry";
     }
 
@@ -99,18 +118,19 @@ public class UserController {
         return "OrganizatorInf";
     }
 
-    @RequestMapping(value="/weddingHosts/{category}")     //просмотр списка организаторов по категориям и полуение навания категории и реализация кнопки Вернуться назад в заависимости от типа пользователя который вошел
-    public String weddingHosts(@PathVariable int category, @ModelAttribute("userJSP") User user, Model m){
+    @RequestMapping(value="/weddingHosts/{category}/{sort}")     //просмотр списка организаторов по категориям и полуение навания категории и реализация кнопки Вернуться назад в заависимости от типа пользователя который вошел
+    public String weddingHosts(@PathVariable int category, @PathVariable int sort, @ModelAttribute("userJSP") User user, Model m){
         int type = user.getTypeOfUser();
         logger.info(user.getName()+type);
         if (type==1) {m.addAttribute("backRef", "userIndex");}
         else if (type==2) {m.addAttribute("backRef", "organizatorIndex");}
         else if (type==3) {m.addAttribute("backRef", "adminIndex");}
         else {m.addAttribute("backRef", "Error");}
-        List<User> list = userDao.getByCategory(category);  //Вывод списка пользователей по категориям и вывод названия категории
+        List<User> list = userDao.getByCategory(category, sort);  //Вывод списка пользователей по категориям и вывод названия категории
         Category cat = categoryDao.getCategory(category);
         m.addAttribute("list",list);
         m.addAttribute("cat",cat.getName());
+        m.addAttribute("catid",category);
         return "WeddingHosts";
     }
 
@@ -188,7 +208,10 @@ public class UserController {
     public String checkUser(@ModelAttribute("command") User user, Model m){
         User foundedUser=userDao.checkUser(user);    //Выполнение метода checkUser
         logger.info("Выполнение метода checkUser " + user.getLogin());
-        if (foundedUser==null) return "redirect:/Error";
+        if (foundedUser==null) {
+            logger.info("Неверный логин или пароль");
+            return "redirect:/errentry";
+        }
         m.addAttribute("userJSP", foundedUser);
         if (foundedUser.getTypeOfUser()==1) return "redirect:/userIndex";   //вход в зависимости от типа пользователя
         if (foundedUser.getTypeOfUser()==2) return "redirect:/organizatorIndex";

@@ -18,11 +18,13 @@ public class UserDAO {
     JdbcTemplate template;
     private static final Logger logger= LoggerFactory.getLogger(UserDAO.class);
 
-    public List<User> getByCategory(int category){
+    public List<User> getByCategory(int category, int sort){
         logger.info("Выполнение метода getByCategory для вывода организаторов по категориям");
         String Sql="select u.userId, u.name, u.surname, u.organizationName, " +
                 "(select sum(mark)/count(*) from commentrating c where organizatorId=u.userId) as rating " +
                 "from user u where category=" + category;
+        if (sort == 1) Sql+= " order by rating desc";
+        else Sql+= " order by u.name asc";
         try{
             return template.query(Sql,new RowMapper<User>(){
                 public User mapRow(ResultSet rs, int row) throws SQLException {

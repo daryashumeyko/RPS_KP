@@ -15,6 +15,7 @@
 
 <body bgcolor="FFCCFF">
 <form:form method="post" action="saveorganizator" enctype="multipart/form-data">
+
     <table >
         <tr>
             <td><h2>Заполните данные для регистрации:</h2></td>
@@ -22,10 +23,12 @@
         <tr>
             <td>Имя:</td>
             <td><form:input path="name"/></td>
+            <td><form:errors path="name"/></td>
         </tr>
         <tr>
             <td>Фамилия:</td>
             <td><form:input path="surname"/></td>
+            <td><form:errors path="surname"/></td>
         </tr>
         <tr>
             <td>Возраст:</td>
@@ -80,11 +83,12 @@
         </tr>
         <tr>
             <td>Пароль:</td>
-            <td><form:input path="password"/></td>
+            <td><form:input type="password" path="password"/></td>
         </tr>
         <tr>
             <td> </td>
             <td><input type="submit" value="Добавить" /></td>
+
         </tr>
     </table>
 </form:form>
@@ -95,6 +99,5 @@
         <td bgcolor="CC99FF" width="130"> <a href="index">Вернуться назад</a> </td>
     </tr>
 </table>
-
 </body>
 </html>

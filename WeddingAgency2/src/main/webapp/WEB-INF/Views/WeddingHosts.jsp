@@ -19,15 +19,20 @@
 
 <table border="3">
     <tr>
-        <td bgcolor="CC99FF" width="60"> <a href="../index">Выход</a></td>
-        <td bgcolor="CC99FF" width="150"> <a href="../${backRef}">Вернуться назад</a> </td>
+        <td bgcolor="CC99FF" width="60"> <a href="../../index">Выход</a></td>
+        <td bgcolor="CC99FF" width="150"> <a href="../../${backRef}">Вернуться назад</a> </td>
     </tr>
 </table>
 <br>
 <table border="2" width="70%" cellpadding="2">
     <tr>
         <td width="250" bgcolor="CC99FF"> <font size="5" color="660099">${cat}</font></td>
-        <td><a href="36.html">Сортировать по рейтингу</a></td>
+        <td>Сортировать
+            <a href="../../weddingHosts/${catid}/1">по рейтингу</a>
+            /
+            <a href="../../weddingHosts/${catid}/0">по алфавиту</a>
+        </td>
+
     </tr>
 </table>
 
@@ -36,9 +41,9 @@
     <c:when test="${fn:length(list) gt 0}">
         <c:forEach var="user" items="${list}">
             <tr>
-                <td><a href="../organizatorInf/${user.userId}">${user.name} ${user.surname}</a></td>
+                <td><a href="../../organizatorInf/${user.userId}">${user.name} ${user.surname}</a></td>
                 <td>${user.organizationName}</td>
-                <td><img src="../getUserImage/${user.userId}" height="150" width="150"/></td>
+                <td><img src="../../getUserImage/${user.userId}" height="150" width="150"/></td>
                 <td>${user.rating}</td>
             </tr>
         </c:forEach>

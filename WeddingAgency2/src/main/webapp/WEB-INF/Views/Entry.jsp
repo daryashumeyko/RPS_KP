@@ -25,12 +25,12 @@
             <td><form:input type="password" path="password" /></td>
         </tr>
         <tr>
-            <td> </td>
+            <td></td>
             <td><input type="submit" value="Войти" /></td>
         </tr>
     </table>
 </form:form>
-
+<p>${msg}</p>
 <table border="2">
     <tr>
         <td bgcolor="CC99FF" width="120"> <a href="index">Вернуться назад</a> </td>

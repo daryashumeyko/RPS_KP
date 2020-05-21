@@ -34,7 +34,7 @@
     </tr>
 
     <tr>
-        <td><a href="weddingHosts/1">- Ведущие </a></td>
+        <td><a href="weddingHosts/1/0">- Ведущие </a></td>
         <td rowspan="17">Мы являемся единственным свадебным агентством в городе Владимир,
             с помощью которого вы сможете подготовиться к одному из самых значимых дней в вашей жизни
             максимально быстро и просто. Вы сможете просмотреть анкеты ведущих, фотографов и других
@@ -44,20 +44,20 @@
     </tr>
 
     <tr>
-        <td> <a href="weddingHosts/2">- Фотографы </a></td>
+        <td> <a href="weddingHosts/2/0">- Фотографы </a></td>
 
     </tr>
-    <tr><td> <a href="weddingHosts/3">- Видеографы </a></td></tr>
-    <tr><td> <a href="weddingHosts/4">- Рестораны </a></td></tr>
-    <tr><td> <a href="weddingHosts/5">- Декор и флористика </a></td></tr>
-    <tr><td> <a href="weddingHosts/6">- Мастера причёски и макияжа </a></td></tr>
-    <tr><td> <a href="weddingHosts/7">- Свадебные салоны </a></td></tr>
-    <tr><td> <a href="weddingHosts/8">- Шоу-программы </a></td></tr>
-    <tr><td> <a href="weddingHosts/9">- Транспорт </a></td></tr>
-    <tr><td> <a href="weddingHosts/10">- Торты </a></td></tr>
-    <tr><td> <a href="weddingHosts/11">- Музыкальное сопровождение </a></td></tr>
-    <tr><td> <a href="weddingHosts/12">- Постановка свадебного танца </a></td></tr>
-    <tr><td> <a href="weddingHosts/13">- Отели </a></td></tr>
+    <tr><td> <a href="weddingHosts/3/0">- Видеографы </a></td></tr>
+    <tr><td> <a href="weddingHosts/4/0">- Рестораны </a></td></tr>
+    <tr><td> <a href="weddingHosts/5/0">- Декор и флористика </a></td></tr>
+    <tr><td> <a href="weddingHosts/6/0">- Мастера причёски и макияжа </a></td></tr>
+    <tr><td> <a href="weddingHosts/7/0">- Свадебные салоны </a></td></tr>
+    <tr><td> <a href="weddingHosts/8/0">- Шоу-программы </a></td></tr>
+    <tr><td> <a href="weddingHosts/9/0">- Транспорт </a></td></tr>
+    <tr><td> <a href="weddingHosts/10/0">- Торты </a></td></tr>
+    <tr><td> <a href="weddingHosts/11/0">- Музыкальное сопровождение </a></td></tr>
+    <tr><td> <a href="weddingHosts/12/0">- Постановка свадебного танца </a></td></tr>
+    <tr><td> <a href="weddingHosts/13/0">- Отели </a></td></tr>
 
     <tr>
         <td width="250" bgcolor="CC99FF"> <font size="5" color="660099"><a href="19.html">- Мои заказы </a></font></td>
