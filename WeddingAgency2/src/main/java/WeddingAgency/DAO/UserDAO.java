@@ -6,8 +6,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
-import javax.xml.bind.SchemaOutputResolver;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -118,45 +116,4 @@ public class UserDAO {
     public void setTemplate(JdbcTemplate template) {
         this.template = template;
     }
-
-    /*public List<User> getAllUsers(){
-        logger.info("Выполнение метода getAllUsers для вывода всех пользователей");
-        try{
-            return template.query("select * from user",new RowMapper<User>(){
-
-                public User mapRow(ResultSet rs, int row) throws SQLException {
-                    User u =  new User();
-                    u.setUserId(rs.getInt("userId"));
-                    u.setLogin(rs.getString("login"));
-                    u.setPassword(rs.getString("password"));
-                    u.setEmail(rs.getString("email"));
-                    return u;
-                }
-            });
-
-        }catch (Exception e){
-            logger.error("Ошибка при выполнении метода getAllUsers: ", e);
-            return null;
-        }
-    }*/
-
-    /* public int update(User user){
-        logger.info("Выполнение метода update - изменение данных о пользователе");
-        String query="update user set name=?, surname=?, age=?, telephone=?, " +
-                "email=?, login=?, password=?, weddingWishes=?, category=?, " +
-                "description=?, typeOfUser=?, photo=?, organizationName=?, address=?  where userId=?";
-        Object[] params = {user.getName(), user.getSurname(), user.getAge(), user.getTelephone(),
-                user.getEmail(), user.getLogin(), user.getPassword(), user.getWeddingWishes(),
-                user.getCategory(), user.getDescription(), user.getTypeOfUser(),
-                user.getPhoto(), user.getOrganizationName(), user.getAddress()};
-        int[] types = {Types.VARCHAR, Types.VARCHAR, Types.INTEGER, Types.VARCHAR,
-                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR, Types.INTEGER,
-                Types.VARCHAR, Types.INTEGER, Types.VARCHAR, Types.VARCHAR, Types.VARCHAR};
-        try {
-            return template.update(query,params,types);
-        }catch (Exception e) {
-            logger.error("Ошибка при выполнении метода update: ", e);
-            return -1;
-        }
-    }*/
 }

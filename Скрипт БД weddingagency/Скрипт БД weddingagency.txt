@@ -1,0 +1,88 @@
+CREATE DATABASE weddinghosts;
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `commentrating` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) DEFAULT NULL,
+  `organizatorId` int(11) DEFAULT NULL,
+  `mark` int(11) DEFAULT NULL,
+  `comment` varchar(150) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `organizatorId_idx` (`organizatorId`),
+  CONSTRAINT `organizatorId` FOREIGN KEY (`organizatorId`) REFERENCES `user` (`userId`)
+);
+
+CREATE TABLE `costs` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `costs` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `guests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `surname` varchar(45) DEFAULT NULL,
+  `comment` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userId_idx` (`userId`),
+  CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
+);
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `organizatorId` int(11) DEFAULT NULL,
+  `message` varchar(250) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `organizatorId` int(11) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `typeofuser` (
+  `typeOfUser` int(11) NOT NULL,
+  `description` varchar(45) NOT NULL,
+  PRIMARY KEY (`typeOfUser`)
+);
+
+CREATE TABLE `user` (
+  `userId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `surname` varchar(45) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `telephone` varchar(45) DEFAULT NULL,
+  `weddingWishes` varchar(200) DEFAULT NULL,
+  `category` int(11) DEFAULT NULL,
+  `description` varchar(250) DEFAULT NULL,
+  `typeOfUser` int(11) DEFAULT NULL,
+  `login` varchar(45) DEFAULT NULL,
+  `password` varchar(15) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `rating` float DEFAULT NULL,
+  `image` longblob,
+  `address` varchar(45) DEFAULT NULL,
+  `organizationName` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`userId`),
+  UNIQUE KEY `userId_UNIQUE` (`userId`),
+  KEY `typeOfUser_idx` (`typeOfUser`),
+  KEY `category_idx` (`category`),
+  CONSTRAINT `category` FOREIGN KEY (`category`) REFERENCES `category` (`id`)
+);

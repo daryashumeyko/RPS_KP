@@ -7,8 +7,6 @@ import WeddingAgency.Models.CommentRating;
 import WeddingAgency.Models.Guests;
 import WeddingAgency.Models.User;
 import WeddingAgency.Models.Category;
-import WeddingAgency.UserValidator;
-import com.sun.org.glassfish.external.probe.provider.annotations.ProbeParam;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -29,13 +25,6 @@ import java.util.List;
 @Controller
 @SessionAttributes({"userJSP", "backRef"})   //Сессионные атрибуты для извлечения данных о пользователе после входа.
 public class UserController {
-
-   // private UserValidator validator;
-
-   // @Autowired
-    //public UserController(UserValidator validator){
-        //this.validator = validator;
-    //}
 
     private static final Logger logger= LoggerFactory.getLogger(UserController.class); //подключение логгера
 
@@ -247,40 +236,4 @@ public class UserController {
     public String viewUsers(){
         return "Error";
     }
-
-    /*   @RequestMapping(value="/userInf/{id}")//Пояснение: @PathVariable используется для работы с параметрами, передаваемыми через адрес запроса
-    public String userInf(@PathVariable int id, Model m){
-        User user=userDao.getUserById(id);
-        logger.info(user.toString());
-        m.addAttribute("user", user);
-        m.addAttribute("backRef", "userIndex");
-        return "UserInf";
-    }*/
-
-  /*  @RequestMapping(value = "show/editsave")
-    public String editSave(@ModelAttribute("command") User user){
-        int id = userDao.update(user);
-        if (id!=-1) return  "redirect:../entry";
-        else return "redirect:/Error";
-    }*/
-
-  /*  @RequestMapping("/viewUsers") //Пояснение: указание какой url будет обрабатываться
-    public String viewUsers(Model m){
-        List<User> list=userDao.getAllUsers();
-        m.addAttribute("list",list);
-        return "ViewUsers";
-    }*/
-
-        /*@RequestMapping(value="/show/{id}")//Пояснение: @PathVariable используется для работы с параметрами, передаваемыми через адрес запроса
-    public String edit(@PathVariable int id, Model m){
-        User user=userDao.getUserById(id);
-        m.addAttribute("command", user);
-        return "EditUser";
-    }*/
-
-        /*@RequestMapping("/addUser")
-    public String addUser(Model m){
-        m.addAttribute("command", new User());
-        return "AddUser";
-    }*/
 }
